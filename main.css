@@ -20,7 +20,7 @@ body{
   height: 100%;
   font-size: 1.5em;
 }
-.match-section{
+#match section{
   display:flex;
   flex-direction: column;
   justify-content: center;

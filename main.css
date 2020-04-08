@@ -89,7 +89,7 @@ body{
 }
 #try-again-button:hover{
   animation-name: make-bigger;
-  animation-duration: 3s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
   cursor: pointer;
 }

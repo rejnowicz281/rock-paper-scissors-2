@@ -75,3 +75,6 @@ body{
   background-color: indianred !important;
   color: indigo !important;
 }
+.hidden{
+  opacity: 0;
+}

@@ -49,6 +49,9 @@ body{
 #score-section p{
   padding: 20px;
 }
+#result{
+  font-size: 0.3em;
+}
 .choice button{
   border: inherit;
   border-radius: 4px;
@@ -62,9 +65,16 @@ body{
   background-color: hsl(0, 0%, 60%);
   color: hsl(0, 0%, 20%);
 }
-#user-choice button:hover{
+#player-choice button:hover{
   cursor: pointer;
 }
 #computer-choice button:hover{
+  pointer-events: none;
+}
+.chosen{
+  background-color: indianred !important;
+  color: indigo !important;
+}
+.no-cursor-pointer{
   pointer-events: none;
 }

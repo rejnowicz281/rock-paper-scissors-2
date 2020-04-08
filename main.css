@@ -75,6 +75,3 @@ body{
   background-color: indianred !important;
   color: indigo !important;
 }
-.no-cursor-pointer{
-  pointer-events: none;
-}

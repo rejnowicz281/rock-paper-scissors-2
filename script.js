@@ -15,12 +15,36 @@ const computer = {
   allButtons: document.querySelectorAll(".computer-button")
 }
 
+function makePlayerButtonChosen(chosenButton) {
+  for (button of player.allbuttons) {
+    if (button.classList.contains("chosen")) {
+      button.classList.remove("chosen");
+    }
+  }
+  chosenButton.classList.add("chosen");
+}
+
+function makeComputerButtonChosen(chosenButton) {
+  for (button of computer.allButtons) {
+    if (button.classList.contains("chosen")) {
+      button.classList.remove("chosen");
+    }
+  }
+  chosenButton.classList.add("chosen");
+}
+
 function computerRNG() {
   let rng = Math.floor(Math.random() * 3);
-  return (rng == 0) ? "Rock" :
-    (rng == 1) ? "Paper" :
-      (rng == 2) ? "Scissors" :
-        false;
+  if (rng == 0) {
+    makeComputerButtonChosen(computer.rock);
+    return "Rock";
+  } else if (rng == 1) {
+    makeComputerButtonChosen(computer.paper);
+    return "Paper";
+  } else if (rng == 2) {
+    makeComputerButtonChosen(computer.scissors);
+    return "Scissors";
+  }
 }
 
 function compareHands(playerSelection, computerSelection) {
@@ -49,14 +73,17 @@ function compareHands(playerSelection, computerSelection) {
 
 function play() {
   player.rock.addEventListener("click", function () {
+    makePlayerButtonChosen(this);
     compareHands("Rock", computerRNG());
   });
 
   player.paper.addEventListener("click", function () {
+    makePlayerButtonChosen(this);
     compareHands("Paper", computerRNG());
   });
 
   player.scissors.addEventListener("click", function () {
+    makePlayerButtonChosen(this);
     compareHands("Scissors", computerRNG());
   });
 }

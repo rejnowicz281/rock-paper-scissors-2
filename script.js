@@ -1,11 +1,12 @@
 let scoreCounter = document.getElementById("score-counter");
 let result = document.getElementById("result");
+
 const player = {
   points: 0,
   rock: document.getElementById("player-rock"),
   paper: document.getElementById("player-paper"),
   scissors: document.getElementById("player-scissors"),
-  allbuttons: document.querySelectorAll(".player-button")
+  allButtons: document.querySelectorAll(".player-button")
 }
 const computer = {
   points: 0,
@@ -16,7 +17,7 @@ const computer = {
 }
 
 function makePlayerButtonChosen(chosenButton) {
-  for (button of player.allbuttons) {
+  for (button of player.allButtons) {
     if (button.classList.contains("chosen")) {
       button.classList.remove("chosen");
     }
@@ -69,6 +70,41 @@ function compareHands(playerSelection, computerSelection) {
   }
 
   scoreCounter.textContent = `${player.points} - ${computer.points}`;
+
+  endGameAfterFiveRounds();
+}
+
+function endGameAfterFiveRounds() {
+  const allChoiceButtons = document.querySelectorAll(".choice button");
+  const tryAgainButton = document.getElementById("try-again-button");
+
+  for (button of player.allButtons) {
+    button.addEventListener("click", function () {
+      if (player.points === 5 || computer.points === 5) {
+
+        for (button of player.allButtons) {
+          button.style.pointerEvents = "none";
+        }
+
+        for (button of allChoiceButtons) {
+          if (button.classList.contains("chosen")) {
+            button.classList.remove("chosen");
+          }
+        }
+
+        tryAgainButton.classList.remove("hidden");
+        tryAgainButton.addEventListener("click", function () {
+          window.location.reload();
+        });
+
+        if (player.points === 5) {
+          result.textContent = `Player wins the game!`;
+        } else if (computer.points === 5) {
+          result.textContent = `Computer wins the game!`;
+        }
+      }
+    });
+  }
 }
 
 function play() {

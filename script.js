@@ -93,9 +93,6 @@ function endGameAfterFiveRounds() {
         }
 
         tryAgainButton.classList.remove("hidden");
-        tryAgainButton.addEventListener("click", function () {
-          window.location.reload();
-        });
 
         if (player.points === 5) {
           result.textContent = `Player wins the game!`;
@@ -105,6 +102,11 @@ function endGameAfterFiveRounds() {
       }
     });
   }
+
+  tryAgainButton.addEventListener("click", function () {
+    window.location.reload();
+  });
+
 }
 
 function play() {
